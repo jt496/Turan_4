@@ -440,7 +440,7 @@ by
   set H : SimpleGraph α := mp (minsert M h) with hH
   simp [insert_AB]; rw [sum_union h]; rw [H.degRes_add_sum' h, H.degRes_add_sum' h]
   rw [add_assoc, mp_int_sum M h, add_zero]
-  rw [←add_assoc, card_eq_sum_ones C, mul_sum]; simp_rw  [hH]; 
+  rw [←add_assoc, card_eq_sum_ones C, mul_sum];-- simp_rw  [hH]; 
   rw [mp_old_sum M h,add_assoc, add_right_inj,mul_one]
   rw [ H.bip_count',← sum_add_distrib]
   apply sum_congr rfl; 
@@ -464,8 +464,7 @@ by
     exact nadj (hs1 ha.1 hb.1 ne)
   by_contra h; push_neg at h 
   have ub : ∑ i in  (range (M.t + 1)), (S ∩ M.P i).card ≤ M.t + 1 
-  · dsimp;  
-    nth_rw 2 [← card_range (M.t + 1)];
+  · nth_rw 2 [← card_range (M.t + 1)];
     nth_rw 1 [card_eq_sum_ones]
     apply sum_le_sum h
   nth_rw 2 [ht] at ub 

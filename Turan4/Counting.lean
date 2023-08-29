@@ -102,7 +102,7 @@ by
     rw [zero_add]; unfold defaultM; dsimp; 
     simp only [zero_add, range_one, sum_singleton, ite_true]; 
     apply sum_le_sum
-    intro x hx; rw [G.two_clique_free ha x hx];dsimp; exact _root_.zero_le _
+    intro x hx; rw [G.two_clique_free ha x hx]; exact _root_.zero_le _
   --- t.succ case
   | succ t  ht => 
     intro A ha; obtain ⟨B, hBa, hBc, hBs⟩ := G.furedi_help A ha

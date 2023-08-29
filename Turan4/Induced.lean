@@ -88,7 +88,7 @@ theorem ind_adj_imp' : (G.ind A).Adj v w → v ∈ A ∧ w ∈ A := fun h => h.2
 theorem ind_nbhd_mem  : v ∈ A → (G.ind A).neighborFinset v = G.nbhdRes v A :=
 by
   intro hv; unfold neighborFinset nbhdRes; ext x 
-  simp_rw [Set.mem_toFinset, mem_neighborSet, and_self_iff]
+  simp_rw [Set.mem_toFinset, mem_neighborSet]
   constructor; 
   · intro ha; rw [mem_inter,mem_neighborFinset]; exact ⟨ha.2.2, ha.1⟩
   · rw [mem_inter, mem_neighborFinset]; intro h; exact ⟨h.2,hv,h.1⟩
@@ -450,7 +450,7 @@ def disJoin (M : MultiPart α) : SimpleGraph α
 -- the two versions of "union of induced disjoint parts" are the same
 theorem biUnion_eq_disJoin_sum (M : MultiPart α) : G.biUnion M = G.disJoin M :=
   by
-  ext; simp_rw [mem_range, exists_prop]; 
+  ext; simp_rw [mem_range]; 
   constructor
   · intro ⟨i, hi, ad, hx, hy⟩; exact ⟨ad, i, hi, hx, hy⟩;
   · intro ⟨ad, i, hi, hx, hy⟩; exact ⟨i, hi, ad, hx, hy⟩

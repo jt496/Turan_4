@@ -598,7 +598,7 @@ def move (M : MultiPart α) (hvi : i ∈ range (M.t + 1) ∧ v ∈ M.P i)
   P := by intro k; exact ite (k ≠ i ∧ k ≠ j) (M.P k) (ite (k = i) ((M.P i).erase v) (insert v (M.P j)))
   A := M.A
   uni := by
-    rw [M.uni]; ext a;simp_rw [mem_biUnion,mem_range, Ne.def, exists_prop] at * 
+    rw [M.uni]; ext a; simp_rw [mem_biUnion,mem_range, Ne.def] at * 
     constructor;
     · intro h  
       by_cases hav : a = v
@@ -643,7 +643,7 @@ def move (M : MultiPart α) (hvi : i ∈ range (M.t + 1) ∧ v ∈ M.P i)
     · rw [disjoint_insert_left]
       refine ⟨?_,M.disj j hj.1 b hb h_6.2.symm⟩;
       intro hb2; have := uniq_part hb hvi.1 hb2 hvi.2; exact h_6.1 this
-    · simp_rw [disjoint_insert_left, disjoint_singleton_left, mem_erase]
+    · simp_rw [disjoint_insert_left, mem_erase]
       constructor
       · push_neg; intro hc; contradiction
       · apply disjoint_of_subset_right _ (M.disj j hj.1 i hvi.1 hj.2);
